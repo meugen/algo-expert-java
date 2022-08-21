@@ -1,8 +1,6 @@
-package com.algo.extert.arrays;
+package com.algo.expert.arrays;
 
-import com.algo.expert.arrays.TwoNumberSum;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
