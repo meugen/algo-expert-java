@@ -3,7 +3,7 @@ package com.algo.expert.greedyalgorithms;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class Photos {
+public class ClassPhotos {
 
     public static boolean classPhotos(
             ArrayList<Integer> redShirtHeights, ArrayList<Integer> blueShirtHeights) {

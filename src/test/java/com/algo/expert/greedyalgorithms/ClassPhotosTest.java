@@ -11,7 +11,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PhotosTest {
+public class ClassPhotosTest {
 
     private static final String TEST_CASE1 = "{\n" +
             "  \"blueShirtHeights\": [6, 9, 2, 4, 5],\n" +
@@ -77,7 +77,7 @@ public class PhotosTest {
     @ParameterizedTest
     @MethodSource("params")
     void testCases(ArrayList<Integer> red, ArrayList<Integer> blue, boolean expected) {
-        boolean result = Photos.classPhotos(red, blue);
+        boolean result = ClassPhotos.classPhotos(red, blue);
         Assertions.assertEquals(expected, result);
     }
 
