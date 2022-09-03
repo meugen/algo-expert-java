@@ -12,7 +12,13 @@ public class LargestRangeTest {
     @ParameterizedTest
     @MethodSource("params")
     void testCases(int[] array, int[] expected) {
-        int[] result = LargestRange.largestRange(array);
+        implTestCases(new LargestRange.Solution1(), array, expected);
+        implTestCases(new LargestRange.Solution2(), array, expected);
+        implTestCases(new LargestRange.Solution3(), array, expected);
+    }
+
+    private void implTestCases(LargestRange impl, int[] array, int[] expected) {
+        int[] result = impl.largestRange(array);
         Assertions.assertArrayEquals(expected, result);
     }
 
