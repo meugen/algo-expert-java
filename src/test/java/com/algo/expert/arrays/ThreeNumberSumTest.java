@@ -9,14 +9,18 @@ import java.util.List;
 
 public class ThreeNumberSumTest {
 
-    @ParameterizedTest
-    @MethodSource("params")
-    void testCases(int[] array, int targetSum, List<Integer[]> expected) {
-        List<Integer[]> result = ThreeNumberSum.threeNumberSum(array, targetSum);
+    private void internalTestCases(ThreeNumberSum impl, int[] array, int targetSum, List<Integer[]> expected) {
+        List<Integer[]> result = impl.threeNumberSum(array, targetSum);
         Assertions.assertEquals(expected.size(), result.size());
         for (int i=0; i<result.size(); i++) {
             Assertions.assertArrayEquals(expected.get(i), result.get(i));
         }
+    }
+
+    @ParameterizedTest
+    @MethodSource("params")
+    void testCases(int[] array, int targetSum, List<Integer[]> expected) {
+        internalTestCases(new ThreeNumberSum.Solution1(), array, targetSum, expected);
     }
 
     static List<Arguments> params() {
