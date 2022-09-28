@@ -2,16 +2,20 @@ package com.algo.expert.arrays;
 
 import java.util.Arrays;
 
-public class SortedSquaredArray {
+public interface SortedSquaredArray {
 
-    private SortedSquaredArray() {}
+    int[] sortedSquaredArray(int[] array);
 
-    public static int[] sortedSquaredArray(int[] array) {
-        int[] result = new int[array.length];
-        for (int i=0; i<array.length; i++) {
-            result[i] = array[i] * array[i];
+    class Solution1 implements SortedSquaredArray {
+
+        @Override
+        public int[] sortedSquaredArray(int[] array) {
+            int[] result = new int[array.length];
+            for (int i=0; i<array.length; i++) {
+                result[i] = array[i] * array[i];
+            }
+            Arrays.sort(result);
+            return result;
         }
-        Arrays.sort(result);
-        return result;
     }
 }
