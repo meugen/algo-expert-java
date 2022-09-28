@@ -9,11 +9,15 @@ import java.util.List;
 
 public class BubbleSortTest {
 
+    private void internalTestCases(BubbleSort impl, int[] array, int[] expected) {
+        int[] result = impl.bubbleSort(array);
+        Assertions.assertArrayEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(int[] array, int[]expected) {
-        int[] result = BubbleSort.bubbleSort(array);
-        Assertions.assertArrayEquals(expected, result);
+        internalTestCases(new BubbleSort.Solution1(), array, expected);
     }
 
     static List<Arguments> params() {

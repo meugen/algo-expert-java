@@ -1,118 +1,120 @@
 package com.algo.expert.arrays;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class SpiralTraverse {
+public interface SpiralTraverse {
 
-    public static List<Integer> spiralTraverse(int[][] array) {
-        // Write your code here.
-        return new SpiralTraverse(array).internalSpiralTraverse();
+    List<Integer> spiralTraverse(int[][] array);
+
+    class Solution1 implements SpiralTraverse {
+
+        @Override
+        public List<Integer> spiralTraverse(int[][] array) {
+            Coordinates coordinates = new Coordinates(array);
+
+            Move move = new RightMove();
+
+            List<Integer> result = new ArrayList<>();
+            result.add(array[coordinates.curY][coordinates.curX]);
+            while (coordinates.bottom- coordinates.top >= 0 && coordinates.right- coordinates.left>=0) {
+                while (move.canMove(coordinates)) {
+                    move.doMove(coordinates);
+                    result.add(array[coordinates.curY][coordinates.curX]);
+                }
+                move.markMoved(coordinates);
+                move = move.next();
+            }
+            return result;
+        }
     }
 
-    private int[][] array;
-    private int top;
-    private int bottom;
-    private int left;
-    private int right;
+}
 
-    private int curX;
-    private int curY;
+class Coordinates {
+    int top;
+    int bottom;
+    int left;
+    int right;
 
-    SpiralTraverse() {}
+    int curX;
+    int curY;
 
-    SpiralTraverse(int[][] array) {
-        this.array = array;
-        top = 0;
-        bottom = array.length - 1;
-        left = 0;
-        right = array[0].length - 1;
-    }
+    Coordinates(int[][] array) {
+        this.top = 0;
+        this.bottom = array.length - 1;
+        this.left = 0;
+        this.right = array[0].length - 1;
 
-    List<Integer> internalSpiralTraverse() {
-        Move move = new RightMove();
-
-        List<Integer> result = new ArrayList<>();
         curX = 0;
         curY = 0;
-        result.add(array[curY][curX]);
-        while (bottom-top >= 0 && right-left>=0) {
-            while (move.canMove(this)) {
-                move.doMove(this);
-                result.add(array[curY][curX]);
-            }
-            move.markMoved(this);
-            move = move.next();
-        }
-        return result;
     }
 
-    interface Move {
-        boolean canMove(SpiralTraverse program);
-        void doMove(SpiralTraverse program);
-        void markMoved(SpiralTraverse program);
-        Move next();
-    }
+}
 
-    static class RightMove implements Move {
-        public boolean canMove(SpiralTraverse program) {
-            return program.curX < program.right;
-        }
-        public void doMove(SpiralTraverse program) {
-            program.curX++;
-        }
-        public void markMoved(SpiralTraverse program) {
-            program.top++;
-        }
-        public Move next() {
-            return new BottomMove();
-        }
-    }
+interface Move {
+    boolean canMove(Coordinates coordinates);
+    void doMove(Coordinates coordinates);
+    void markMoved(Coordinates coordinates);
+    Move next();
+}
 
-    static class BottomMove implements Move {
-        public boolean canMove(SpiralTraverse program) {
-            return program.curY < program.bottom;
-        }
-        public void doMove(SpiralTraverse program) {
-            program.curY++;
-        }
-        public void markMoved(SpiralTraverse program) {
-            program.right--;
-        }
-        public Move next() {
-            return new LeftMove();
-        }
+class RightMove implements Move {
+    public boolean canMove(Coordinates coordinates) {
+        return coordinates.curX < coordinates.right;
     }
-
-    static class LeftMove implements Move {
-        public boolean canMove(SpiralTraverse program) {
-            return program.curX > program.left;
-        }
-        public void doMove(SpiralTraverse program) {
-            program.curX--;
-        }
-        public void markMoved(SpiralTraverse program) {
-            program.bottom--;
-        }
-        public Move next() {
-            return new TopMove();
-        }
+    public void doMove(Coordinates coordinates) {
+        coordinates.curX++;
     }
+    public void markMoved(Coordinates coordinates) {
+        coordinates.top++;
+    }
+    public Move next() {
+        return new BottomMove();
+    }
+}
 
-    static class TopMove implements Move {
-        public boolean canMove(SpiralTraverse program) {
-            return program.curY > program.top;
-        }
-        public void doMove(SpiralTraverse program) {
-            program.curY--;
-        }
-        public void markMoved(SpiralTraverse program) {
-            program.left++;
-        }
-        public Move next() {
-            return new RightMove();
-        }
+class BottomMove implements Move {
+    public boolean canMove(Coordinates coordinates) {
+        return coordinates.curY < coordinates.bottom;
+    }
+    public void doMove(Coordinates coordinates) {
+        coordinates.curY++;
+    }
+    public void markMoved(Coordinates coordinates) {
+        coordinates.right--;
+    }
+    public Move next() {
+        return new LeftMove();
+    }
+}
+
+class LeftMove implements Move {
+    public boolean canMove(Coordinates coordinates) {
+        return coordinates.curX > coordinates.left;
+    }
+    public void doMove(Coordinates coordinates) {
+        coordinates.curX--;
+    }
+    public void markMoved(Coordinates coordinates) {
+        coordinates.bottom--;
+    }
+    public Move next() {
+        return new TopMove();
+    }
+}
+
+class TopMove implements Move {
+    public boolean canMove(Coordinates coordinates) {
+        return coordinates.curY > coordinates.top;
+    }
+    public void doMove(Coordinates coordinates) {
+        coordinates.curY--;
+    }
+    public void markMoved(Coordinates coordinates) {
+        coordinates.left++;
+    }
+    public Move next() {
+        return new RightMove();
     }
 }

@@ -46,10 +46,8 @@ public class FourNumberSumTest {
             "  \"targetSum\": 5\n" +
             "}";
 
-    @ParameterizedTest
-    @MethodSource("params")
-    void testCases(TestCase testCase, int expectedSize) {
-        List<Integer[]> result = FourNumberSum.fourNumberSum(testCase.array, testCase.targetSum);
+    private void internalTestCases(FourNumberSum impl, TestCase testCase, int expectedSize) {
+        List<Integer[]> result = impl.fourNumberSum(testCase.array, testCase.targetSum);
         Assertions.assertEquals(expectedSize, result.size());
         for (Integer[] item : result) {
             Assertions.assertEquals(4, item.length);
@@ -59,6 +57,12 @@ public class FourNumberSumTest {
             }
             Assertions.assertEquals(testCase.targetSum, sum);
         }
+    }
+
+    @ParameterizedTest
+    @MethodSource("params")
+    void testCases(TestCase testCase, int expectedSize) {
+        internalTestCases(new FourNumberSum.Solution1(), testCase, expectedSize);
     }
 
     static List<Arguments> params() {

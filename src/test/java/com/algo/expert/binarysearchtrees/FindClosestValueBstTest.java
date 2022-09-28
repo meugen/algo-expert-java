@@ -371,11 +371,15 @@ public class FindClosestValueBstTest {
             "  \"root\": \"100\"\n" +
             "}";
 
+    private void internalTestCases(FindClosestValueBst impl, FindClosestValueBst.BST tree, int target, int expected) {
+        int result = impl.findClosestValueInBst(tree, target);
+        Assertions.assertEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(FindClosestValueBst.BST tree, int target, int expected) {
-        int result = FindClosestValueBst.findClosestValueInBst(tree, target);
-        Assertions.assertEquals(expected, result);
+        internalTestCases(new FindClosestValueBst.Solution1(), tree, target, expected);
     }
 
     static List<Arguments> params() {

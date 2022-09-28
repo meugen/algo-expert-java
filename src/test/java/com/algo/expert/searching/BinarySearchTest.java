@@ -82,11 +82,15 @@ public class BinarySearchTest {
             "  \"target\": 3\n" +
             "}";
 
+    private void internalTestCases(BinarySearch impl, int[] array, int target, int expected) {
+        int result = impl.binarySearch(array, target);
+        Assertions.assertEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(int[] array, int target, int expected) {
-        int result = BinarySearch.binarySearch(array, target);
-        Assertions.assertEquals(expected, result);
+        internalTestCases(new BinarySearch.Solution1(), array, target, expected);
     }
 
     static List<Arguments> params() {

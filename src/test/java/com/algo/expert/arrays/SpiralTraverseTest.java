@@ -111,14 +111,18 @@ public class SpiralTraverseTest {
             "  ]\n" +
             "}";
 
-    @ParameterizedTest
-    @MethodSource("params")
-    void testCases(int[][] array, List<Integer> expected) {
-        List<Integer> result = SpiralTraverse.spiralTraverse(array);
+    private void internalTestCases(SpiralTraverse impl, int[][] array, List<Integer> expected) {
+        List<Integer> result = impl.spiralTraverse(array);
         Assertions.assertEquals(expected.size(), result.size());
         for (int i = 0; i < result.size(); i++) {
             Assertions.assertEquals(expected.get(i), result.get(i));
         }
+    }
+
+    @ParameterizedTest
+    @MethodSource("params")
+    void testCases(int[][] array, List<Integer> expected) {
+        internalTestCases(new SpiralTraverse.Solution1(), array, expected);
     }
 
     static List<Arguments> params() {

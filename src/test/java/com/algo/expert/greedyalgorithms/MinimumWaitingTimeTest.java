@@ -9,11 +9,15 @@ import java.util.List;
 
 public class MinimumWaitingTimeTest {
 
+    private void internalTestCases(MinimumWaitingTime impl, int[] queries, int expected) {
+        int result = impl.minimumWaitingTime(queries);
+        Assertions.assertEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(int[] queries, int expected) {
-        int result = MinimumWaitingTime.minimumWaitingTime(queries);
-        Assertions.assertEquals(expected, result);
+        internalTestCases(new MinimumWaitingTime.Solution1(), queries, expected);
     }
 
     static List<Arguments> params() {

@@ -9,11 +9,17 @@ import java.util.List;
 
 public class NthFibonacciTest {
 
+    private void internalTestCases(NthFibonacci impl, int n, int expected) {
+        int result = impl.getNthFib(n);
+        Assertions.assertEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(int n, int expected) {
-        int result = NthFibonacci.getNthFib(n);
-        Assertions.assertEquals(expected, result);
+        internalTestCases(new NthFibonacci.Solution1(), n, expected);
+        internalTestCases(new NthFibonacci.Solution2(), n, expected);
+        internalTestCases(new NthFibonacci.Solution3(), n, expected);
     }
 
     static List<Arguments> params() {

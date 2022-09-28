@@ -142,11 +142,15 @@ public class NodeDepthsTest {
             "  }\n" +
             "}";
 
+    private void internalTestCases(NodeDepths impl, NodeDepths.BinaryTree root, int expected) {
+        int result = impl.nodeDepths(root);
+        Assertions.assertEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(NodeDepths.BinaryTree root, int expected) {
-        int result = NodeDepths.nodeDepths(root);
-        Assertions.assertEquals(expected, result);
+        internalTestCases(new NodeDepths.Solution1(), root, expected);
     }
 
     static List<Arguments> params() {

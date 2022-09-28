@@ -182,10 +182,8 @@ public class RemoveDuplicatesFromLinkedListTest {
             "  ]\n" +
             "}";
 
-    @ParameterizedTest
-    @MethodSource("params")
-    void testCases(RemoveDuplicatesFromLinkedList.LinkedList linkedList, RemoveDuplicatesFromLinkedList.LinkedList expected) {
-        RemoveDuplicatesFromLinkedList.LinkedList result = RemoveDuplicatesFromLinkedList.removeDuplicatesFromLinkedList(linkedList);
+    private void internalTestCases(RemoveDuplicatesFromLinkedList impl, RemoveDuplicatesFromLinkedList.LinkedList linkedList, RemoveDuplicatesFromLinkedList.LinkedList expected) {
+        RemoveDuplicatesFromLinkedList.LinkedList result = impl.removeDuplicatesFromLinkedList(linkedList);
         RemoveDuplicatesFromLinkedList.LinkedList current = expected;
         while (true) {
             if (current == null) {
@@ -197,6 +195,12 @@ public class RemoveDuplicatesFromLinkedListTest {
             result = result.next;
             current = current.next;
         }
+    }
+
+    @ParameterizedTest
+    @MethodSource("params")
+    void testCases(RemoveDuplicatesFromLinkedList.LinkedList linkedList, RemoveDuplicatesFromLinkedList.LinkedList expected) {
+        internalTestCases(new RemoveDuplicatesFromLinkedList.Solution1(), linkedList, expected);
     }
 
     static List<Arguments> params() {

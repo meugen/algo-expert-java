@@ -99,11 +99,15 @@ public class TandemBicycleTest {
             "  \"redShirtSpeeds\": []\n" +
             "}";
 
+    private void internalTestCases(TandemBicycle impl, int[] red, int[] blue, boolean fastest, int expected) {
+        int result = impl.tandemBicycle(red, blue, fastest);
+        Assertions.assertEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(int[] red, int[] blue, boolean fastest, int expected) {
-        int result = TandemBicycle.tandemBicycle(red, blue, fastest);
-        Assertions.assertEquals(expected, result);
+        internalTestCases(new TandemBicycle.Solution1(), red, blue, fastest, expected);
     }
 
     static List<Arguments> params() {

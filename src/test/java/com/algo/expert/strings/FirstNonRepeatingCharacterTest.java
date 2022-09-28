@@ -9,11 +9,15 @@ import java.util.List;
 
 public class FirstNonRepeatingCharacterTest {
 
+    private void internalTestCases(FirstNonRepeatingCharacter impl, String string, int expected) {
+        int result = impl.firstNonRepeatingCharacter(string);
+        Assertions.assertEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(String string, int expected) {
-        int result = FirstNonRepeatingCharacter.firstNonRepeatingCharacter(string);
-        Assertions.assertEquals(expected, result);
+        internalTestCases(new FirstNonRepeatingCharacter.Solution1(), string, expected);
     }
 
     static List<Arguments> params() {

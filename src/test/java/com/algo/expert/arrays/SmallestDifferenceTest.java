@@ -9,11 +9,15 @@ import java.util.List;
 
 public class SmallestDifferenceTest {
 
+    private void internalTestCases(SmallestDifference impl, int[] arrayOne, int[] arrayTwo, int[] expected) {
+        int[] result = impl.smallestDifference(arrayOne, arrayTwo);
+        Assertions.assertArrayEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(int[] arrayOne, int[] arrayTwo, int[] expected) {
-        int[] result = SmallestDifference.smallestDifference(arrayOne, arrayTwo);
-        Assertions.assertArrayEquals(expected, result);
+        internalTestCases(new SmallestDifference.Solution1(), arrayOne, arrayTwo, expected);
     }
 
     static List<Arguments> params() {

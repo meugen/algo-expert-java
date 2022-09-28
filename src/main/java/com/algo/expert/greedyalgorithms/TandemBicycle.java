@@ -2,21 +2,27 @@ package com.algo.expert.greedyalgorithms;
 
 import java.util.Arrays;
 
-public class TandemBicycle {
+public interface TandemBicycle {
 
-    public static int tandemBicycle(int[] redShirtSpeeds, int[] blueShirtSpeeds, boolean fastest) {
-        Arrays.sort(redShirtSpeeds);
-        Arrays.sort(blueShirtSpeeds);
+    int tandemBicycle(int[] redShirtSpeeds, int[] blueShirtSpeeds, boolean fastest);
 
-        int result = 0;
-        for (int i = 0; i<redShirtSpeeds.length; i++) {
-            result += Math.max(redShirtSpeeds[i], selectBlueShirt(blueShirtSpeeds, fastest, i));
+    class Solution1 implements TandemBicycle {
+
+        @Override
+        public int tandemBicycle(int[] redShirtSpeeds, int[] blueShirtSpeeds, boolean fastest) {
+            Arrays.sort(redShirtSpeeds);
+            Arrays.sort(blueShirtSpeeds);
+
+            int result = 0;
+            for (int i = 0; i<redShirtSpeeds.length; i++) {
+                result += Math.max(redShirtSpeeds[i], selectBlueShirt(blueShirtSpeeds, fastest, i));
+            }
+            return result;
         }
-        return result;
-    }
 
-    private static int selectBlueShirt(int[] blueShirtSpeeds, boolean fastest, int index) {
-        if (fastest) return blueShirtSpeeds[blueShirtSpeeds.length - index - 1];
-        return blueShirtSpeeds[index];
+        private int selectBlueShirt(int[] blueShirtSpeeds, boolean fastest, int index) {
+            if (fastest) return blueShirtSpeeds[blueShirtSpeeds.length - index - 1];
+            return blueShirtSpeeds[index];
+        }
     }
 }

@@ -9,11 +9,15 @@ import java.util.List;
 
 public class ValidateSubsequenceTest {
 
+    private void internalTestCases(ValidateSubsequence impl, List<Integer> array, List<Integer> sequence, boolean expected) {
+        boolean result = impl.isValidSubsequence(array, sequence);
+        Assertions.assertEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(List<Integer> array, List<Integer> sequence, boolean expected) {
-        boolean result = ValidateSubsequence.isValidSubsequence(array, sequence);
-        Assertions.assertEquals(expected, result);
+        internalTestCases(new ValidateSubsequence.Solution1(), array, sequence, expected);
     }
 
     static List<Arguments> params() {

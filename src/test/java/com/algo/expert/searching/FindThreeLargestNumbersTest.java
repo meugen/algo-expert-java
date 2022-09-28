@@ -9,11 +9,15 @@ import java.util.List;
 
 public class FindThreeLargestNumbersTest {
 
+    private void internalTestCases(FindThreeLargestNumbers impl, int[] array, int[] expected) {
+        int[] result = impl.findThreeLargestNumbers(array);
+        Assertions.assertArrayEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(int[] array, int[] expected) {
-        int[] result = FindThreeLargestNumbers.findThreeLargestNumbers(array);
-        Assertions.assertArrayEquals(expected, result);
+        internalTestCases(new FindThreeLargestNumbers.Solution1(), array, expected);
     }
 
     static List<Arguments> params() {

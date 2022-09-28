@@ -9,11 +9,15 @@ import java.util.List;
 
 public class MonotonicArrayTest {
 
+    private void internalTestCases(MonotonicArray impl, int[] array, boolean expected) {
+        boolean result = impl.isMonotonic(array);
+        Assertions.assertEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(int[] array, boolean expected) {
-        boolean result = MonotonicArray.isMonotonic(array);
-        Assertions.assertEquals(expected, result);
+        internalTestCases(new MonotonicArray.Solution1(), array, expected);
     }
 
     static List<Arguments> params() {
