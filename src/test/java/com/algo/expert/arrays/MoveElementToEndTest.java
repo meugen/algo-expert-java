@@ -11,10 +11,8 @@ import java.util.Objects;
 
 public class MoveElementToEndTest {
 
-    @ParameterizedTest
-    @MethodSource("params")
-    void testCases(List<Integer> array, int toMove) {
-        List<Integer> result = MoveElementToEnd.moveElementToEnd(array, toMove);
+    private void internalTestCases(MoveElementToEnd impl, List<Integer> array, int toMove) {
+        List<Integer> result = impl.moveElementToEnd(array, toMove);
         int count = 0;
         for (Integer item : array) {
             if (Objects.equals(item, toMove)) count++;
@@ -29,6 +27,12 @@ public class MoveElementToEndTest {
             Integer item = iterator.previous();
             Assertions.assertNotEquals(toMove, item);
         }
+    }
+
+    @ParameterizedTest
+    @MethodSource("params")
+    void testCases(List<Integer> array, int toMove) {
+        internalTestCases(new MoveElementToEnd.Solution1(), array, toMove);
     }
 
     static List<Arguments> params() {
