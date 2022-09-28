@@ -172,14 +172,18 @@ public class MergeOverlappingIntervalsTest {
             "  [1, 10]\n" +
             "]";
 
-    @ParameterizedTest
-    @MethodSource("params")
-    void testCases(int[][] intervals, int[][] expected) {
-        int[][] result = MergeOverlappingIntervals.mergeOverlappingIntervals(intervals);
+    private void internalTestCases(MergeOverlappingIntervals impl, int[][] intervals, int[][] expected) {
+        int[][] result = impl.mergeOverlappingIntervals(intervals);
         Assertions.assertEquals(expected.length, result.length);
         for (int i = 0; i < result.length; i++) {
             Assertions.assertArrayEquals(expected[i], result[i]);
         }
+    }
+
+    @ParameterizedTest
+    @MethodSource("params")
+    void testCases(int[][] intervals, int[][] expected) {
+        internalTestCases(new MergeOverlappingIntervals.Solution1(), intervals, expected);
     }
 
     static List<Arguments> params() {
