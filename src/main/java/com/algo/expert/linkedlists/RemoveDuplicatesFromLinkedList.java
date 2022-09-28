@@ -1,8 +1,8 @@
 package com.algo.expert.linkedlists;
 
-public class RemoveDuplicatesFromLinkedList {
+public interface RemoveDuplicatesFromLinkedList {
 
-    public static class LinkedList {
+    class LinkedList {
         public int value;
         public LinkedList next;
 
@@ -12,18 +12,24 @@ public class RemoveDuplicatesFromLinkedList {
         }
     }
 
-    public static LinkedList removeDuplicatesFromLinkedList(LinkedList linkedList) {
-        LinkedList current = linkedList;
-        while (current != null) {
-            current.next = findNextUniqueNode(current);
-            current = current.next;
-        }
-        return linkedList;
-    }
+    LinkedList removeDuplicatesFromLinkedList(LinkedList linkedList);
 
-    private static LinkedList findNextUniqueNode(LinkedList item) {
-        int value = item.value;
-        while (item != null && item.value == value) item = item.next;
-        return item;
+    class Solution1 implements RemoveDuplicatesFromLinkedList {
+
+        @Override
+        public LinkedList removeDuplicatesFromLinkedList(LinkedList linkedList) {
+            LinkedList current = linkedList;
+            while (current != null) {
+                current.next = findNextUniqueNode(current);
+                current = current.next;
+            }
+            return linkedList;
+        }
+
+        private LinkedList findNextUniqueNode(LinkedList item) {
+            int value = item.value;
+            while (item != null && item.value == value) item = item.next;
+            return item;
+        }
     }
 }
