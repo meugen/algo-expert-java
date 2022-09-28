@@ -9,11 +9,15 @@ import java.util.List;
 
 public class LongestPeakTest {
 
+    private void internalTestCases(LongestPeak impl, int[] array, int expected) {
+        int result = impl.longestPeak(array);
+        Assertions.assertEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(int[] array, int expected) {
-        int result = LongestPeak.longestPeak(array);
-        Assertions.assertEquals(expected, result);
+        internalTestCases(new LongestPeak.Solution1(), array, expected);
     }
 
     static List<Arguments> params() {
