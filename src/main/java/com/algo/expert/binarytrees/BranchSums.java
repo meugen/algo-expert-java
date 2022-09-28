@@ -3,9 +3,9 @@ package com.algo.expert.binarytrees;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BranchSums {
+public interface BranchSums {
 
-    public static class BinaryTree {
+    class BinaryTree {
         int value;
         BinaryTree left;
         BinaryTree right;
@@ -17,19 +17,25 @@ public class BranchSums {
         }
     }
 
-    public static List<Integer> branchSums(BinaryTree root) {
-        List<Integer> list = new ArrayList<>();
-        branchSumsTo(root, list, 0);
-        return list;
-    }
+    List<Integer> branchSums(BinaryTree root);
 
-    private static void branchSumsTo(BinaryTree item, List<Integer> list, int sum) {
-        sum += item.value;
-        if (item.left == null && item.right == null) {
-            list.add(sum);
-            return;
+    class Solution1 implements BranchSums {
+
+        @Override
+        public List<Integer> branchSums(BinaryTree root) {
+            List<Integer> list = new ArrayList<>();
+            branchSumsTo(root, list, 0);
+            return list;
         }
-        if (item.left != null) branchSumsTo(item.left, list, sum);
-        if (item.right != null) branchSumsTo(item.right, list, sum);
+
+        private void branchSumsTo(BinaryTree item, List<Integer> list, int sum) {
+            sum += item.value;
+            if (item.left == null && item.right == null) {
+                list.add(sum);
+                return;
+            }
+            if (item.left != null) branchSumsTo(item.left, list, sum);
+            if (item.right != null) branchSumsTo(item.right, list, sum);
+        }
     }
 }
