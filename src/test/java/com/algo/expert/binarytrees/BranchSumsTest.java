@@ -127,14 +127,18 @@ public class BranchSumsTest {
             "  }\n" +
             "}";
 
-    @ParameterizedTest
-    @MethodSource("params")
-    void testCases(BranchSums.BinaryTree root, List<Integer> expected) {
-        List<Integer> result = BranchSums.branchSums(root);
+    private void internalTestCases(BranchSums impl, BranchSums.BinaryTree root, List<Integer> expected) {
+        List<Integer> result = impl.branchSums(root);
         Assertions.assertEquals(expected.size(), result.size());
         for (int i = 0; i < result.size(); i++) {
             Assertions.assertEquals(expected.get(i), result.get(i));
         }
+    }
+
+    @ParameterizedTest
+    @MethodSource("params")
+    void testCases(BranchSums.BinaryTree root, List<Integer> expected) {
+        internalTestCases(new BranchSums.Solution1(), root, expected);
     }
 
     static List<Arguments> params() {

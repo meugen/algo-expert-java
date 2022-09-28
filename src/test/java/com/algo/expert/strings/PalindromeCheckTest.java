@@ -9,11 +9,15 @@ import java.util.List;
 
 public class PalindromeCheckTest {
 
+    private void internalTestCases(PalindromeCheck impl, String str, boolean expected) {
+        boolean result = impl.isPalindrome(str);
+        Assertions.assertEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(String str, boolean expected) {
-        boolean result = PalindromeCheck.isPalindrome(str);
-        Assertions.assertEquals(expected, result);
+        internalTestCases(new PalindromeCheck.Solution1(), str, expected);
     }
 
     static List<Arguments> params() {

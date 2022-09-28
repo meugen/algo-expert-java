@@ -9,11 +9,15 @@ import java.util.List;
 
 public class CaesarCipherEncryptorTest {
 
+    private void internalTestCases(CaesarCipherEncryptor impl, String str, int key, String expected) {
+        String result = impl.caesarCypherEncryptor(str, key);
+        Assertions.assertEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(String str, int key, String expected) {
-        String result = CaesarCipherEncryptor.caesarCypherEncryptor(str, key);
-        Assertions.assertEquals(expected, result);
+        internalTestCases(new CaesarCipherEncryptor.Solution1(), str, key, expected);
     }
 
     static List<Arguments> params() {

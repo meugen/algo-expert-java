@@ -9,11 +9,15 @@ import java.util.List;
 
 public class GenerateDocumentTest {
 
+    private void internalTestCases(GenerateDocument impl, String characters, String document, boolean expected) {
+        boolean result = impl.generateDocument(characters, document);
+        Assertions.assertEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(String characters, String document, boolean expected) {
-        boolean result = GenerateDocument.generateDocument(characters, document);
-        Assertions.assertEquals(expected, result);
+        internalTestCases(new GenerateDocument.Solution1(), characters, document, expected);
     }
 
     static List<Arguments> params() {

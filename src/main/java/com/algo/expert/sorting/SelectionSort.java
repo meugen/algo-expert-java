@@ -1,20 +1,25 @@
 package com.algo.expert.sorting;
 
-public class SelectionSort {
+public interface SelectionSort {
 
-    public static int[] selectionSort(int[] array) {
-        // Write your code here.
-        for (int i = 0; i<array.length; i++) {
-            int smallestIdx = i;
-            for (int j = i; j<array.length; j++) {
-                if (array[j] < array[smallestIdx]) {
-                    smallestIdx = j;
+    int[] selectionSort(int[] array);
+
+    class Solution1 implements SelectionSort {
+
+        @Override
+        public int[] selectionSort(int[] array) {
+            for (int i = 0; i<array.length; i++) {
+                int smallestIdx = i;
+                for (int j = i; j<array.length; j++) {
+                    if (array[j] < array[smallestIdx]) {
+                        smallestIdx = j;
+                    }
                 }
+                int tmp = array[i];
+                array[i] = array[smallestIdx];
+                array[smallestIdx] = tmp;
             }
-            int tmp = array[i];
-            array[i] = array[smallestIdx];
-            array[smallestIdx] = tmp;
+            return array;
         }
-        return array;
     }
 }

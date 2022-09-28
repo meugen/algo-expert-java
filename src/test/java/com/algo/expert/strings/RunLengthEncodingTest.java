@@ -9,11 +9,15 @@ import java.util.List;
 
 public class RunLengthEncodingTest {
 
+    private void internalTestCases(RunLengthEncoding impl, String string, String expected) {
+        String result = impl.runLengthEncoding(string);
+        Assertions.assertEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(String string, String expected) {
-        String result = RunLengthEncoding.runLengthEncoding(string);
-        Assertions.assertEquals(expected, result);
+        internalTestCases(new RunLengthEncoding.Solution1(), string, expected);
     }
 
     static List<Arguments> params() {

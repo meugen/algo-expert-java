@@ -122,11 +122,15 @@ public class TournamentWinnerTest {
             "  \"results\": [0]\n" +
             "}";
 
+    private void internalTestCases(TournamentWinner impl, TestCase testCase, String expected) {
+        String result = impl.tournamentWinner(testCase.competitions, testCase.results);
+        Assertions.assertEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(TestCase testCase, String expected) {
-        String result = TournamentWinner.tournamentWinner(testCase.competitions, testCase.results);
-        Assertions.assertEquals(expected, result);
+        internalTestCases(new TournamentWinner.Solution1(), testCase, expected);
     }
 
     static List<Arguments> params() {
@@ -147,7 +151,7 @@ public class TournamentWinnerTest {
     static TestCase parseTestCase(String json) {
         JsonObject object = new Gson().fromJson(json, JsonElement.class).getAsJsonObject();
 
-        ArrayList<ArrayList<String>> competitions = new ArrayList<>();
+        List<List<String>> competitions = new ArrayList<>();
         for (JsonElement element : object.getAsJsonArray("competitions")) {
             ArrayList<String> competition = new ArrayList<>();
             for (JsonElement item : element.getAsJsonArray()) {
@@ -165,10 +169,10 @@ public class TournamentWinnerTest {
     }
 
     static class TestCase {
-        final ArrayList<ArrayList<String>> competitions;
-        final ArrayList<Integer> results;
+        final List<List<String>> competitions;
+        final List<Integer> results;
 
-        public TestCase(ArrayList<ArrayList<String>> competitions, ArrayList<Integer> results) {
+        public TestCase(List<List<String>> competitions, List<Integer> results) {
             this.competitions = competitions;
             this.results = results;
         }

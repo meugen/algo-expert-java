@@ -9,11 +9,15 @@ import java.util.List;
 
 public class SubarraySortTest {
 
+    private void internalTestCases(SubarraySort impl, int[] array, int[] expected) {
+        int[] result = impl.subarraySort(array);
+        Assertions.assertArrayEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(int[] array, int[] expected) {
-        int[] result = SubarraySort.subarraySort(array);
-        Assertions.assertArrayEquals(expected, result);
+        internalTestCases(new SubarraySort.Solution1(), array, expected);
     }
 
     static List<Arguments> params() {
