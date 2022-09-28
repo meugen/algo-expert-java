@@ -44,11 +44,15 @@ public class ProductSumTest {
             "  \"array\": [9, [2, -3, 4], 1, [1, 1, [1, 1, 1]], [[[[3, 4, 1]]], 8], [1, 2, 3, 4, 5, [6, 7], -7], [1, [2, 3, [4, 5]], [6, 0, [7, 0, -8]], -7], [1, -3, 2, [1, -3, 2, [1, -3, 2], [1, -3, 2, [1, -3, 2]], [1, -3, 2]]], -3]\n" +
             "}";
 
+    private void internalTestCases(ProductSum impl, List<Object> array, int expected) {
+        int result = impl.productSum(array);
+        Assertions.assertEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(List<Object> array, int expected) {
-        int result = ProductSum.productSum(array);
-        Assertions.assertEquals(expected, result);
+        internalTestCases(new ProductSum.Solution1(), array, expected);
     }
 
     static List<Arguments> params() {

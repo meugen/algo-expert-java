@@ -2,22 +2,27 @@ package com.algo.expert.recurtion;
 
 import java.util.List;
 
-public class ProductSum {
+public interface ProductSum {
 
-    public static int productSum(List<Object> array) {
-        // Write your code here.
-        return calcProductSum(array, 1);
-    }
+    int productSum(List<Object> array);
 
-    private static int calcProductSum(List<Object> array, int depth) {
-        int result = 0;
-        for (Object obj : array) {
-            if (obj instanceof Integer) {
-                result += (Integer) obj;
-            } else if (obj instanceof List) {
-                result += calcProductSum((List<Object>) obj, depth+1);
-            }
+    class Solution1 implements ProductSum {
+
+        @Override
+        public int productSum(List<Object> array) {
+            return calcProductSum(array, 1);
         }
-        return result * depth;
+
+        private int calcProductSum(List<Object> array, int depth) {
+            int result = 0;
+            for (Object obj : array) {
+                if (obj instanceof Integer) {
+                    result += (Integer) obj;
+                } else if (obj instanceof List) {
+                    result += calcProductSum((List<Object>) obj, depth+1);
+                }
+            }
+            return result * depth;
+        }
     }
 }
