@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DeepFirstSearchTest {
+public class DepthFirstSearchTest {
 
     private static final String TEST_CASE1 = "{\n" +
             "  \"graph\": {\n" +
@@ -105,14 +105,18 @@ public class DeepFirstSearchTest {
             "  }\n" +
             "}";
 
-    @ParameterizedTest
-    @MethodSource("params")
-    void testCases(DepthFirstSearch.Node node, List<String> expected) {
-        List<String> result = node.depthFirstSearch(new ArrayList<>());
+    private void internalTestCases(DepthFirstSearch impl, DepthFirstSearch.Node node, List<String> expected) {
+        List<String> result = impl.depthFirstSearch(node, new ArrayList<>());
         Assertions.assertEquals(expected.size(), result.size());
         for (int i = 0; i < result.size(); i++) {
             Assertions.assertEquals(expected.get(i), result.get(i));
         }
+    }
+
+    @ParameterizedTest
+    @MethodSource("params")
+    void testCases(DepthFirstSearch.Node node, List<String> expected) {
+        internalTestCases(new DepthFirstSearch.Solution1(), node, expected);
     }
 
     static List<Arguments> params() {
