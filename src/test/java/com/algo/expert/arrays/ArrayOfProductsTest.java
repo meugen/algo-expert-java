@@ -9,11 +9,15 @@ import java.util.List;
 
 public class ArrayOfProductsTest {
 
+    private void internalTestCases(ArrayOfProducts impl, int[] array, int[] expected) {
+        int[] result = impl.arrayOfProducts(array);
+        Assertions.assertArrayEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(int[] array, int[] expected) {
-        int[] result = ArrayOfProducts.arrayOfProducts(array);
-        Assertions.assertArrayEquals(expected, result);
+        internalTestCases(new ArrayOfProducts.Solution1(), array, expected);
     }
 
     static List<Arguments> params() {
