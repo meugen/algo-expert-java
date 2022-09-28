@@ -10,12 +10,16 @@ import java.util.List;
 
 public class TwoNumberSumTest {
 
+    private void internalTestCases(TwoNumberSum impl, int[] array, int targetSum, int[] answer) {
+        int[] result = impl.twoNumberSum(array, targetSum);
+        Assertions.assertTrue(Arrays.equals(result, answer) ||
+                (result.length == 2 && result[0] + result[1] == targetSum));
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(int[] array, int targetSum, int[] answer) {
-        int[] result = TwoNumberSum.twoNumberSum(array, targetSum);
-        Assertions.assertTrue(Arrays.equals(result, answer) ||
-                (result.length == 2 && result[0] + result[1] == targetSum));
+        internalTestCases(new TwoNumberSum.Solution1(), array, targetSum, answer);
     }
 
     static List<Arguments> params() {
