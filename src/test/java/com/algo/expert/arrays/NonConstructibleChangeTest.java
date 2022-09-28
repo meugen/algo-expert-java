@@ -9,11 +9,15 @@ import java.util.List;
 
 public class NonConstructibleChangeTest {
 
+    private void internalTestCases(NonConstructibleChange impl, int[] coins, int expected) {
+        int result = impl.nonConstructibleChange(coins);
+        Assertions.assertEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(int[] coins, int expected) {
-        int result = NonConstructibleChange.nonConstructibleChange(coins);
-        Assertions.assertEquals(expected, result);
+        internalTestCases(new NonConstructibleChange.Solution1(), coins, expected);
     }
 
     static List<Arguments> params() {
