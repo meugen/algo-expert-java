@@ -74,11 +74,15 @@ public class ClassPhotosTest {
             "  \"redShirtHeights\": [5, 6]\n" +
             "}";
 
+    private void internalTestCases(ClassPhotos impl, List<Integer> red, List<Integer> blue, boolean expected) {
+        boolean result = impl.classPhotos(red, blue);
+        Assertions.assertEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(ArrayList<Integer> red, ArrayList<Integer> blue, boolean expected) {
-        boolean result = ClassPhotos.classPhotos(red, blue);
-        Assertions.assertEquals(expected, result);
+        internalTestCases(new ClassPhotos.Solution1(), red, blue, expected);
     }
 
     static List<Arguments> params() {
@@ -103,11 +107,11 @@ public class ClassPhotosTest {
 
     static Arguments parseArguments(String json, boolean expected) {
         JsonObject object = new Gson().fromJson(json, JsonElement.class).getAsJsonObject();
-        ArrayList<Integer> red = new ArrayList<>();
+        List<Integer> red = new ArrayList<>();
         for (JsonElement element : object.getAsJsonArray("redShirtHeights")) {
             red.add(element.getAsInt());
         }
-        ArrayList<Integer> blue = new ArrayList<>();
+        List<Integer> blue = new ArrayList<>();
         for (JsonElement element : object.getAsJsonArray("blueShirtHeights")) {
             blue.add(element.getAsInt());
         }
