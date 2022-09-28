@@ -9,11 +9,15 @@ import java.util.List;
 
 public class FirstDuplicateValueTest {
 
+    private void internalTestCases(FirstDuplicateValue impl, int[] array, int expected) {
+        int result = impl.firstDuplicateValue(array);
+        Assertions.assertEquals(expected, result);
+    }
+
     @ParameterizedTest
     @MethodSource("params")
     void testCases(int[] array, int expected) {
-        int result = FirstDuplicateValue.firstDuplicateValue(array);
-        Assertions.assertEquals(expected, result);
+        internalTestCases(new FirstDuplicateValue.Solution1(), array, expected);
     }
 
     static List<Arguments> params() {
