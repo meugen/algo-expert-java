@@ -52,15 +52,18 @@ public interface BstConstruction {
             }
 
             if (right != null) {
-                BST oldLeft = this.left;
-                this.value = right.value;
-                this.left = right.left;
-                this.right = right.right;
-                BST latestLeft = this;
+                BST latestLeft = right;
+                BST clearLeft = null;
                 while (latestLeft.left != null) {
+                    clearLeft = latestLeft;
                     latestLeft = latestLeft.left;
                 }
-                latestLeft.left = oldLeft;
+                this.value = latestLeft.value;
+                if (clearLeft == null) {
+                    this.right = latestLeft.right;
+                } else {
+                    clearLeft.left = null;
+                }
             } else if (left != null) {
                 this.value = left.value;
                 this.right = left.right;
