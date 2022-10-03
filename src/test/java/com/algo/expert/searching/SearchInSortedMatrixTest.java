@@ -202,6 +202,7 @@ public class SearchInSortedMatrixTest {
     @ParameterizedTest
     @MethodSource("params")
     void testCases(int[][] matrix, int target, int[] expected) {
+        internalTestCases(new SearchInSortedMatrix.Solution1(), matrix, target, expected);
         internalTestCases(new SearchInSortedMatrix.Solution2(), matrix, target, expected);
     }
 

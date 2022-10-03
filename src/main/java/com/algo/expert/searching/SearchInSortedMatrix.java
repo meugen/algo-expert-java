@@ -8,17 +8,15 @@ public interface SearchInSortedMatrix {
 
         @Override
         public int[] searchInSortedMatrix(int[][] matrix, int target) {
-            int top = 0;
-            int left = 0;
-            int bottom = matrix.length - 1;
-            int right = matrix[0].length - 1;
-            while (top <= bottom && left <= right) {
-                int x = (left + right) / 2;
-                int y = (top + bottom) / 2;
-                if (matrix[x][y] == target) {
-                    return new int[] {x, y};
+            int y = 0;
+            int x = matrix[0].length - 1;
+            while (x >= 0 && y <= matrix.length - 1) {
+                if (matrix[y][x] == target) return new int[] {y, x};
+                if (target < matrix[y][x]) {
+                    x--;
+                } else {
+                    y++;
                 }
-
             }
             return new int[] {-1, -1};
         }
