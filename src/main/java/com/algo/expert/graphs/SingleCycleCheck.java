@@ -1,6 +1,5 @@
 package com.algo.expert.graphs;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -30,18 +29,16 @@ public interface SingleCycleCheck {
 
         @Override
         public boolean hasSingleCycle(int[] array) {
-            int[] copy = Arrays.copyOf(array, array.length);
-
             int index = 0;
-            for (int i = 0; i < copy.length; i++) {
-                int newIndex = index + copy[index];
-                while (newIndex >= copy.length) newIndex -= copy.length;
-                while (newIndex < 0) newIndex += copy.length;
-                copy[index] = 0;
+            for (int i = 0; i < array.length; i++) {
+                int newIndex = index + array[index];
+                while (newIndex >= array.length) newIndex -= array.length;
+                while (newIndex < 0) newIndex += array.length;
+                array[index] = 0;
                 index = newIndex;
             }
             if (index != 0) return false;
-            for (int value : copy) {
+            for (int value : array) {
                 if (value != 0) return false;
             }
             return true;
