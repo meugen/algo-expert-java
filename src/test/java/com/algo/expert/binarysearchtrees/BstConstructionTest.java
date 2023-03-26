@@ -2393,9 +2393,9 @@ public class BstConstructionTest {
 
     static List<Arguments> params() {
         return List.of(
-//                parseArguments(TEST_CASE1, EXPECTED1),
-//                parseArguments(TEST_CASE2, EXPECTED2),
-//                parseArguments(TEST_CASE3, EXPECTED3),
+                parseArguments(TEST_CASE1, EXPECTED1),
+                parseArguments(TEST_CASE2, EXPECTED2),
+                parseArguments(TEST_CASE3, EXPECTED3),
                 parseArguments(TEST_CASE4, EXPECTED4),
                 parseArguments(TEST_CASE5, EXPECTED5),
                 parseArguments(TEST_CASE6, EXPECTED6),
