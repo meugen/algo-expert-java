@@ -89,7 +89,7 @@ public class BinarySearchTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(int[] array, int target, int expected) {
+    void testCasesSolution1(int[] array, int target, int expected) {
         internalTestCases(new BinarySearch.Solution1(), array, target, expected);
     }
 

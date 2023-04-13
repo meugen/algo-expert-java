@@ -337,7 +337,7 @@ public class InvertBinaryTreeTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCase(String testCase, String expected) {
+    void testCaseSolution1(String testCase, String expected) {
         internalTestCase(new InvertBinaryTree.Solution1(), testCase, expected);
     }
 

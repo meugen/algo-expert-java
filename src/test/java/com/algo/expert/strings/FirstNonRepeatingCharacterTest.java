@@ -16,7 +16,7 @@ public class FirstNonRepeatingCharacterTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(String string, int expected) {
+    void testCasesSolution1(String string, int expected) {
         internalTestCases(new FirstNonRepeatingCharacter.Solution1(), string, expected);
     }
 

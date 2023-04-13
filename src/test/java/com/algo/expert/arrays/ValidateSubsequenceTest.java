@@ -16,7 +16,7 @@ public class ValidateSubsequenceTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(List<Integer> array, List<Integer> sequence, boolean expected) {
+    void testCasesSolution1(List<Integer> array, List<Integer> sequence, boolean expected) {
         internalTestCases(new ValidateSubsequence.Solution1(), array, sequence, expected);
     }
 

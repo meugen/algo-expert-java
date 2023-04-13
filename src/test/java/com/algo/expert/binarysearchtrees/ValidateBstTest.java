@@ -251,7 +251,7 @@ public class ValidateBstTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(ValidateBst.BST tree, boolean expected) {
+    void testCasesSolution1(ValidateBst.BST tree, boolean expected) {
         internalTestCases(new ValidateBst.Solution1(), tree, expected);
     }
 

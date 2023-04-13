@@ -16,7 +16,7 @@ public class RunLengthEncodingTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(String string, String expected) {
+    void testCasesSolution1(String string, String expected) {
         internalTestCases(new RunLengthEncoding.Solution1(), string, expected);
     }
 

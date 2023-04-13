@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.MethodSource;
 import java.util.HashMap;
 import java.util.List;
 
-public class FundSuccessorTest {
+public class FindSuccessorTest {
 
     private static final String TEST_CASE1 = "{\n" +
             "  \"tree\": {\n" +
@@ -250,8 +250,13 @@ public class FundSuccessorTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCase(FindSuccessor.BinaryTree tree, FindSuccessor.BinaryTree node, String expected) {
+    void testCaseSolution1(FindSuccessor.BinaryTree tree, FindSuccessor.BinaryTree node, String expected) {
         internalTestCase(new FindSuccessor.Solution1(), tree, node, expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("params")
+    void testCaseSolution2(FindSuccessor.BinaryTree tree, FindSuccessor.BinaryTree node, String expected) {
         internalTestCase(new FindSuccessor.Solution2(), tree, node, expected);
     }
 

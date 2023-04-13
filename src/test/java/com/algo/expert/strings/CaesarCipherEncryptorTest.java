@@ -16,7 +16,7 @@ public class CaesarCipherEncryptorTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(String str, int key, String expected) {
+    void testCasesSolution1(String str, int key, String expected) {
         internalTestCases(new CaesarCipherEncryptor.Solution1(), str, key, expected);
     }
 

@@ -217,7 +217,7 @@ public class PermutationsTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(List<Integer> array, List<List<Integer>> expected) {
+    void testCasesSolution1(List<Integer> array, List<List<Integer>> expected) {
         internalTestCases(new Permutations.Solution1(), array, expected);
     }
 
