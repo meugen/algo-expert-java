@@ -62,7 +62,7 @@ public class NumberWaysMakeChangeTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(int n, int[] denoms, int expected) {
+    void testCasesSolution1(int n, int[] denoms, int expected) {
         internalTestCases(new NumberWaysMakeChange.Solution1(), n, denoms, expected);
     }
 

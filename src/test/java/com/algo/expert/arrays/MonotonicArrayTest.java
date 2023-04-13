@@ -16,7 +16,7 @@ public class MonotonicArrayTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(int[] array, boolean expected) {
+    void testCasesSolution1(int[] array, boolean expected) {
         internalTestCases(new MonotonicArray.Solution1(), array, expected);
     }
 

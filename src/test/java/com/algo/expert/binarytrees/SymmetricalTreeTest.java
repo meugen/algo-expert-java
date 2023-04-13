@@ -229,7 +229,7 @@ public class SymmetricalTreeTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCase(String json, boolean expected) {
+    void testCaseSolution1(String json, boolean expected) {
         var tree = parseTestCase(json);
         internalTestCase(new SymmetricalTree.Solution1(), tree, expected);
     }

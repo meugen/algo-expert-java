@@ -309,7 +309,7 @@ public class EvaluateExpressionTreeTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCase(EvaluateExpressionTree.BinaryTree tree, int expected) {
+    void testCaseSolution1(EvaluateExpressionTree.BinaryTree tree, int expected) {
         internalTestCase(new EvaluateExpressionTree.Solution1(), tree, expected);
     }
 

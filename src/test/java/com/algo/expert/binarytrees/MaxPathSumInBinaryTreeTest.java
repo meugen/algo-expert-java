@@ -435,7 +435,7 @@ public class MaxPathSumInBinaryTreeTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCase(String json, int expected) {
+    void testCaseSolution1(String json, int expected) {
         internalTestCase(new MaxPathSumInBinaryTree.Solution1(), json, expected);
     }
 

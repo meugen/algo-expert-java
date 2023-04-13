@@ -16,7 +16,7 @@ public class FindThreeLargestNumbersTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(int[] array, int[] expected) {
+    void testCasesSolution1(int[] array, int[] expected) {
         internalTestCases(new FindThreeLargestNumbers.Solution1(), array, expected);
     }
 

@@ -16,7 +16,7 @@ public class PalindromeCheckTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(String str, boolean expected) {
+    void testCasesSolution1(String str, boolean expected) {
         internalTestCases(new PalindromeCheck.Solution1(), str, expected);
     }
 

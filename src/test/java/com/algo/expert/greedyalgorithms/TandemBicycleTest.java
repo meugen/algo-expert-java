@@ -106,7 +106,7 @@ public class TandemBicycleTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(int[] red, int[] blue, boolean fastest, int expected) {
+    void testCasesSolution1(int[] red, int[] blue, boolean fastest, int expected) {
         internalTestCases(new TandemBicycle.Solution1(), red, blue, fastest, expected);
     }
 

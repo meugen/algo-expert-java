@@ -16,7 +16,7 @@ public class MinimumWaitingTimeTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(int[] queries, int expected) {
+    void testCasesSolution1(int[] queries, int expected) {
         internalTestCases(new MinimumWaitingTime.Solution1(), queries, expected);
     }
 

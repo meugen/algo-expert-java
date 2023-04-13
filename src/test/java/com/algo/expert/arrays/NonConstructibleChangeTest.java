@@ -16,7 +16,7 @@ public class NonConstructibleChangeTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(int[] coins, int expected) {
+    void testCasesSolution1(int[] coins, int expected) {
         internalTestCases(new NonConstructibleChange.Solution1(), coins, expected);
     }
 

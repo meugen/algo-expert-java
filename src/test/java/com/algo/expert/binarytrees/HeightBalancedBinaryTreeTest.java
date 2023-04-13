@@ -281,7 +281,7 @@ public class HeightBalancedBinaryTreeTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCase(String testCase, boolean expected) {
+    void testCaseSolution1(String testCase, boolean expected) {
         internalTestCase(new HeightBalancedBinaryTree.Solution1(), testCase, expected);
     }
 
