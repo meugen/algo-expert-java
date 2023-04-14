@@ -237,7 +237,7 @@ public class SquareOfZerosTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(List<List<Integer>> matrix, boolean expected) {
+    void testCasesSolution1(List<List<Integer>> matrix, boolean expected) {
         internalTestCases(new SquareOfZeros.Solution1(), matrix, expected);
     }
 

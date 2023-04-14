@@ -61,7 +61,7 @@ public class FourNumberSumTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(TestCase testCase, int expectedSize) {
+    void testCasesSolution1(TestCase testCase, int expectedSize) {
         internalTestCases(new FourNumberSum.Solution1(), testCase, expectedSize);
     }
 

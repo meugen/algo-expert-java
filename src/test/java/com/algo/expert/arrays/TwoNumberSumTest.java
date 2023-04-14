@@ -18,7 +18,7 @@ public class TwoNumberSumTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(int[] array, int targetSum, int[] answer) {
+    void testCasesSolution1(int[] array, int targetSum, int[] answer) {
         internalTestCases(new TwoNumberSum.Solution1(), array, targetSum, answer);
     }
 

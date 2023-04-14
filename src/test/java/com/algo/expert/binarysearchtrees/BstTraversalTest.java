@@ -187,7 +187,7 @@ public class BstTraversalTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(BstTraversal.BST tree, Expected expected) {
+    void testCasesSolution1(BstTraversal.BST tree, Expected expected) {
         internalTestCases(new BstTraversal.Solution1(), tree, expected);
     }
 

@@ -68,8 +68,13 @@ public class SingleCycleCheckTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(int[] array, boolean expected) {
+    void testCasesSolution1(int[] array, boolean expected) {
         internalTestCases(new SingleCycleCheck.Solution1(), array, expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("params")
+    void testCasesSolution2(int[] array, boolean expected) {
         internalTestCases(new SingleCycleCheck.Solution2(), array, expected);
     }
 

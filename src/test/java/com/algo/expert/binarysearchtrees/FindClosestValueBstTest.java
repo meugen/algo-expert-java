@@ -378,7 +378,7 @@ public class FindClosestValueBstTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(FindClosestValueBst.BST tree, int target, int expected) {
+    void testCasesSolution1(FindClosestValueBst.BST tree, int target, int expected) {
         internalTestCases(new FindClosestValueBst.Solution1(), tree, target, expected);
     }
 

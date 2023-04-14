@@ -199,7 +199,7 @@ public class RemoveDuplicatesFromLinkedListTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(RemoveDuplicatesFromLinkedList.LinkedList linkedList, RemoveDuplicatesFromLinkedList.LinkedList expected) {
+    void testCasesSolution1(RemoveDuplicatesFromLinkedList.LinkedList linkedList, RemoveDuplicatesFromLinkedList.LinkedList expected) {
         internalTestCases(new RemoveDuplicatesFromLinkedList.Solution1(), linkedList, expected);
     }
 

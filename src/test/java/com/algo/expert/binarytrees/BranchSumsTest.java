@@ -137,7 +137,7 @@ public class BranchSumsTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(BranchSums.BinaryTree root, List<Integer> expected) {
+    void testCasesSolution1(BranchSums.BinaryTree root, List<Integer> expected) {
         internalTestCases(new BranchSums.Solution1(), root, expected);
     }
 

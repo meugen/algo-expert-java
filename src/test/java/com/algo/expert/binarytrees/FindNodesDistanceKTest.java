@@ -236,7 +236,7 @@ public class FindNodesDistanceKTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCase(FindNodesDistanceK.BinaryTree tree, int target, int k, List<Integer> expected) {
+    void testCaseSolution1(FindNodesDistanceK.BinaryTree tree, int target, int k, List<Integer> expected) {
         internalTestCase(new FindNodesDistanceK.Solution1(), tree, target, k, expected);
     }
 

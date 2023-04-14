@@ -121,7 +121,7 @@ public class SpiralTraverseTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(int[][] array, List<Integer> expected) {
+    void testCasesSolution1(int[][] array, List<Integer> expected) {
         internalTestCases(new SpiralTraverse.Solution1(), array, expected);
     }
 

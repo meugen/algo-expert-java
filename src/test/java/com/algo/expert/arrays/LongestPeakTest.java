@@ -16,7 +16,7 @@ public class LongestPeakTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(int[] array, int expected) {
+    void testCasesSolution1(int[] array, int expected) {
         internalTestCases(new LongestPeak.Solution1(), array, expected);
     }
 

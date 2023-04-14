@@ -249,7 +249,7 @@ public class BinaryTreeDiameterTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCase(String testCase, int expected) {
+    void testCaseSolution1(String testCase, int expected) {
         internalTestCase(new BinaryTreeDiameter.Solution1(), testCase, expected);
     }
 

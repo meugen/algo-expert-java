@@ -182,7 +182,7 @@ public class MergeOverlappingIntervalsTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(int[][] intervals, int[][] expected) {
+    void testCasesSolution1(int[][] intervals, int[][] expected) {
         internalTestCases(new MergeOverlappingIntervals.Solution1(), intervals, expected);
     }
 

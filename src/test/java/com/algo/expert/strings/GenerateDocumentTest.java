@@ -16,7 +16,7 @@ public class GenerateDocumentTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(String characters, String document, boolean expected) {
+    void testCasesSolution1(String characters, String document, boolean expected) {
         internalTestCases(new GenerateDocument.Solution1(), characters, document, expected);
     }
 

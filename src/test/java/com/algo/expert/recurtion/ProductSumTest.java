@@ -51,7 +51,7 @@ public class ProductSumTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(List<Object> array, int expected) {
+    void testCasesSolution1(List<Object> array, int expected) {
         internalTestCases(new ProductSum.Solution1(), array, expected);
     }
 
