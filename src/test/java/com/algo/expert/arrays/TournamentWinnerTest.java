@@ -129,7 +129,7 @@ public class TournamentWinnerTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(TestCase testCase, String expected) {
+    void testCasesSolution1(TestCase testCase, String expected) {
         internalTestCases(new TournamentWinner.Solution1(), testCase, expected);
     }
 

@@ -96,7 +96,7 @@ public class ZigzagTraverseTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(List<List<Integer>> array, List<Integer> expected) {
+    void testCasesSolution1(List<List<Integer>> array, List<Integer> expected) {
         implTestCases(new ZigzagTraverse.Solution1(), array, expected);
     }
 

@@ -81,7 +81,7 @@ public class ClassPhotosTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(ArrayList<Integer> red, ArrayList<Integer> blue, boolean expected) {
+    void testCasesSolution1(ArrayList<Integer> red, ArrayList<Integer> blue, boolean expected) {
         internalTestCases(new ClassPhotos.Solution1(), red, blue, expected);
     }
 

@@ -149,7 +149,7 @@ public class NodeDepthsTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(NodeDepths.BinaryTree root, int expected) {
+    void testCasesSolution1(NodeDepths.BinaryTree root, int expected) {
         internalTestCases(new NodeDepths.Solution1(), root, expected);
     }
 

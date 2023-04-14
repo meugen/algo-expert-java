@@ -31,7 +31,7 @@ public class MoveElementToEndTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(List<Integer> array, int toMove) {
+    void testCasesSolution1(List<Integer> array, int toMove) {
         internalTestCases(new MoveElementToEnd.Solution1(), array, toMove);
     }
 

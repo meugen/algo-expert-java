@@ -16,7 +16,7 @@ public class SmallestDifferenceTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(int[] arrayOne, int[] arrayTwo, int[] expected) {
+    void testCasesSolution1(int[] arrayOne, int[] arrayTwo, int[] expected) {
         internalTestCases(new SmallestDifference.Solution1(), arrayOne, arrayTwo, expected);
     }
 

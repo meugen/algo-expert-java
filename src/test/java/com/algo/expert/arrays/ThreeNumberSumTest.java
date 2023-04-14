@@ -19,7 +19,7 @@ public class ThreeNumberSumTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(int[] array, int targetSum, List<Integer[]> expected) {
+    void testCasesSolution1(int[] array, int targetSum, List<Integer[]> expected) {
         internalTestCases(new ThreeNumberSum.Solution1(), array, targetSum, expected);
     }
 

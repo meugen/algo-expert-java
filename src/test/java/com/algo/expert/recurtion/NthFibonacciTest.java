@@ -16,9 +16,19 @@ public class NthFibonacciTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(int n, int expected) {
+    void testCasesSolution1(int n, int expected) {
         internalTestCases(new NthFibonacci.Solution1(), n, expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("params")
+    void testCasesSolution2(int n, int expected) {
         internalTestCases(new NthFibonacci.Solution2(), n, expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("params")
+    void testCasesSolution3(int n, int expected) {
         internalTestCases(new NthFibonacci.Solution3(), n, expected);
     }
 

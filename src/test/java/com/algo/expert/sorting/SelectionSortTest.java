@@ -16,7 +16,7 @@ public class SelectionSortTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(int[] array, int[] expected) {
+    void testCasesSolution1(int[] array, int[] expected) {
         internalTestCases(new SelectionSort.Solution1(), array, expected);
     }
 

@@ -11,9 +11,19 @@ public class LargestRangeTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(int[] array, int[] expected) {
+    void testCasesSolution1(int[] array, int[] expected) {
         implTestCases(new LargestRange.Solution1(), array, expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("params")
+    void testCasesSolution2(int[] array, int[] expected) {
         implTestCases(new LargestRange.Solution2(), array, expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("params")
+    void testCasesSolution3(int[] array, int[] expected) {
         implTestCases(new LargestRange.Solution3(), array, expected);
     }
 

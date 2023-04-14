@@ -436,7 +436,7 @@ public class MergeBinaryTreesTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCase(
+    void testCaseSolution1(
             MergeBinaryTrees.BinaryTree tree1,
             MergeBinaryTrees.BinaryTree tree2,
             MergeBinaryTrees.BinaryTree expected

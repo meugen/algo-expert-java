@@ -386,7 +386,7 @@ public class ApartmentHuntingTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(List<Map<String, Boolean>> blocks, String[] reqs, int expected) {
+    void testCasesSolution1(List<Map<String, Boolean>> blocks, String[] reqs, int expected) {
         implTestCases(new ApartmentHunting.Solution1(), blocks, reqs, expected);
     }
 

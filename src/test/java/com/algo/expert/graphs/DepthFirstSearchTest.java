@@ -115,7 +115,7 @@ public class DepthFirstSearchTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(DepthFirstSearch.Node node, List<String> expected) {
+    void testCasesSolution1(DepthFirstSearch.Node node, List<String> expected) {
         internalTestCases(new DepthFirstSearch.Solution1(), node, expected);
     }
 

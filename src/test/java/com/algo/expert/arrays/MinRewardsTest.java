@@ -11,7 +11,7 @@ public class MinRewardsTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(int[] scores, int expected) {
+    void testCasesSolution1(int[] scores, int expected) {
         implTestCases(new MinRewards.Solution1(), scores, expected);
     }
 

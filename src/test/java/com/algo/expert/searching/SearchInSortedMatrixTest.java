@@ -201,8 +201,13 @@ public class SearchInSortedMatrixTest {
 
     @ParameterizedTest
     @MethodSource("params")
-    void testCases(int[][] matrix, int target, int[] expected) {
+    void testCasesSolution1(int[][] matrix, int target, int[] expected) {
         internalTestCases(new SearchInSortedMatrix.Solution1(), matrix, target, expected);
+    }
+
+    @ParameterizedTest
+    @MethodSource("params")
+    void testCasesSolution2(int[][] matrix, int target, int[] expected) {
         internalTestCases(new SearchInSortedMatrix.Solution2(), matrix, target, expected);
     }
 
