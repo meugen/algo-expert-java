@@ -8,16 +8,12 @@ public interface KadanesAlgorithm {
 
         @Override
         public int kadanesAlgorithm(int[] array) {
-            int result = 0;
-            int partialSum = 0;
+            int result = Integer.MIN_VALUE;
+            int sum = 0;
             for (int value : array) {
-                if (value < 0) {
-                    result += Math.max(partialSum, 0);
-                    partialSum = 0;
-                }
-                partialSum += value;
+                sum = Math.max(value, sum + value);
+                result = Math.max(result, sum);
             }
-            result += Math.max(partialSum, 0);
             return result;
         }
     }
