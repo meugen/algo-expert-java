@@ -37,49 +37,83 @@ public interface BstConstruction {
         }
 
         public BST remove(int value) {
-            if (value < this.value) {
-                if (left != null) {
-                    left.remove(value);
-                }
+            if (left == null && right == null) {
                 return this;
             }
 
-            if (value > this.value) {
-                if (right != null) {
-                    right.remove(value);
-                }
+            ParentBST toRemove = findNode(value);
+            if (toRemove.current == null) {
                 return this;
             }
-
-            if (right != null) {
-                BST latestLeft = right;
-                BST clearLeft = null;
-                while (latestLeft.left != null) {
-                    clearLeft = latestLeft;
-                    latestLeft = latestLeft.left;
-                }
-                this.value = latestLeft.value;
-                if (clearLeft == null) {
-                    this.right = latestLeft.right;
+            ParentBST replaceTo = new ParentBST(toRemove);
+            if (toRemove.current.right != null) {
+                replaceTo.doNext(toRemove.current.right);
+                replaceTo.findMostLeft();
+                replaceTo.parent.left = replaceTo.current.left;
+            } else if (toRemove.current.left != null) {
+                replaceTo.doNext(toRemove.current.left);
+                replaceTo.findMostRight();
+                replaceTo.parent.right = replaceTo.current.right;
+            } else if (replaceTo.parent != null) {
+                if (value < replaceTo.parent.value) {
+                    replaceTo.parent.left = null;
                 } else {
-                    clearLeft.left = null;
+                    replaceTo.parent.right = null;
                 }
-            } else if (left != null) {
-                this.value = left.value;
-                this.right = left.right;
-                this.left = left.left;
             }
+            toRemove.current.value = replaceTo.current.value;
             return this;
         }
 
         public boolean contains(int value) {
-            if (value < this.value) {
-                return left != null && left.contains(value);
+            return findNode(value).current != null;
+        }
+
+        private ParentBST findNode(int value) {
+            ParentBST result = new ParentBST(this);
+            while (result.current != null && result.current.value != value) {
+                if (value < result.current.value) {
+                    result.doNext(result.current.left);
+                } else {
+                    result.doNext(result.current.right);
+                }
             }
-            if (value > this.value) {
-                return right != null && right.contains(value);
+            return result;
+        }
+    }
+
+    static class ParentBST {
+        BST parent;
+        BST current;
+
+        ParentBST(ParentBST parentBST) {
+            this(parentBST.current, parentBST.parent);
+        }
+
+        ParentBST(BST current) {
+            this(current, null);
+        }
+
+        ParentBST(BST current, BST parent) {
+            this.current = current;
+            this.parent = parent;
+        }
+
+        void doNext(BST next) {
+            this.parent = this.current;
+            this.current = next;
+        }
+
+        void findMostLeft() {
+            while (this.current.left != null) {
+                doNext(this.current.left);
             }
-            return true;
+        }
+
+        void findMostRight() {
+            while (this.current.right != null) {
+                doNext(this.current.right);
+            }
         }
     }
 }
